@@ -9,15 +9,16 @@ import { SolicitNoAtendidComponent } from './solicit-no-atendid/solicit-no-atend
 import { UsuariosComponent } from './usuarios/usuarios.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { CommonModule } from "@angular/common";
+import { DataTablesModule } from "angular-datatables";
 const routes: Routes = [
     { path: '', component: SidebarComponent, children: [
-        { path: '', component: DashboardComponent },
         { path: 'clientes', component: ClientsComponent},
         { path: 'dispositivos', component: DispositivosComponent},
         { path: 'lista-general', component: SolicitGeneralComponent},
         { path: 'lista-atendidos', component: SolicitAtendidComponent},
         { path: 'lista-no-atendidos', component: SolicitNoAtendidComponent},
         { path: 'usuarios', component: UsuariosComponent},
+        { path: '**', component: DashboardComponent },
     ]}
 ]
 
@@ -35,7 +36,7 @@ const routes: Routes = [
       imports: [
         CommonModule,
         RouterModule.forChild(routes),
-    
+        DataTablesModule
       ]
     })
 export class SidebarModule {}
