@@ -3,12 +3,29 @@
         <div class="card ">
             <div class="card-header text-center"><a href="../index.html"><img class="logo-img" src="/assets/images/teca.png" alt="logo" width="150px"></a><span class="splash-description">Please enter your user information.</span></div>
             <div class="card-body">
-                <form>
+                <form [formGroup]="loginForm" novalidate (ngSubmit)="login()">
                     <div class="form-group">
-                        <input class="form-control form-control-lg" id="username" type="text" placeholder="Username" autocomplete="off">
+                        <input name="correo"
+                        class="form-control form-control-lg"
+                        type="text"
+                        formControlName="correo"
+                        required
+                        [ngClass]="{
+                        'border-danger' : correo.invalid && (correo.dirty || correo.touched),
+                        'border-success' : correo.valid && (correo.dirty || correo.touched)
+                        }" 
+                        autocomplete="off">
                     </div>
                     <div class="form-group">
-                        <input class="form-control form-control-lg" id="password" type="password" placeholder="Password">
+                        <input class="form-control form-control-lg" name="password"
+                        type="password"
+                        formControlName="password"
+                        required
+                        [ngClass]="{
+                        'border-danger' : password.invalid && (password.dirty || password.touched),
+                        'border-success' : password.valid && (password.dirty || password.touched)
+                        }"
+                        placeholder="Password">
                     </div>
                     <div class="form-group">
                         <label class="custom-control custom-checkbox">
@@ -16,7 +33,7 @@
                         </label>
                     </div>
                     <button type="submit" class="btn btn-primary btn-lg btn-block"><i class="fas fa-sign-in-alt"></i> &nbsp; Sign in</button><br>
-                    <button type="submit" class="btn btn-primary btn-lg btn-block"> <i class="fab fa-google"></i> &nbsp; Sign in With Google</button>
+                    <button class="btn btn-primary btn-lg btn-block"> <i class="fab fa-google"></i> &nbsp; Sign in With Google</button>
                 </form>
             </div>
             <div class="card-footer bg-white p-0  ">

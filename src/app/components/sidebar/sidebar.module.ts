@@ -10,8 +10,10 @@ import { UsuariosComponent } from './usuarios/usuarios.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { CommonModule } from "@angular/common";
 import { DataTablesModule } from "angular-datatables";
+import { AuthenticationGuard } from "src/app/services/guard/authentication.guard";
 const routes: Routes = [
-    { path: '', component: SidebarComponent, children: [
+    { path: '', component: SidebarComponent, canActivate: [AuthenticationGuard],
+    children: [
         { path: 'clientes', component: ClientsComponent},
         { path: 'dispositivos', component: DispositivosComponent},
         { path: 'lista-general', component: SolicitGeneralComponent},
