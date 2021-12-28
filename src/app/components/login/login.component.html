@@ -7,14 +7,12 @@
                     <div class="form-group">
                         <input name="correo"
                         class="form-control form-control-lg"
-                        type="text"
+                        type="email"
                         formControlName="correo"
                         required
-                        [ngClass]="{
-                        'border-danger' : correo.invalid && (correo.dirty || correo.touched),
-                        'border-success' : correo.valid && (correo.dirty || correo.touched)
-                        }" 
-                        autocomplete="off">
+                        ngModel email
+                        autocomplete="off"
+                        placeholder="E-mail">
                     </div>
                     <div class="form-group">
                         <input class="form-control form-control-lg" name="password"

@@ -10,7 +10,7 @@ import { UsuariosComponent } from './usuarios/usuarios.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { CommonModule } from "@angular/common";
 import { DataTablesModule } from "angular-datatables";
-import { AuthenticationGuard } from "src/app/services/guard/authentication.guard";
+import { AuthenticationGuard } from "src/app/services/auth/guard/authentication.guard";
 const routes: Routes = [
     { path: '', component: SidebarComponent, canActivate: [AuthenticationGuard],
     children: [

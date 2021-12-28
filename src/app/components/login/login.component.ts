@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
-import { AuthenticationService } from 'src/app/services/authentication.service';
+import { AuthenticationService } from 'src/app/services/auth/authentication.service';
 import Swal from 'sweetalert2';
 
 @Component({
@@ -29,7 +29,7 @@ export class LoginComponent implements OnInit {
 
   login () {
     if (this.loginForm.invalid) {
-      Swal.fire('Atención', 'Usuario y/o contraseña incorrectos.', 'warning')
+      Swal.fire('Atención', 'Usuario y/o contraseña incorrectos. Campos incorrectos', 'warning')
       return
     }
 
@@ -40,7 +40,7 @@ export class LoginComponent implements OnInit {
         localStorage.setItem('access_token', result.token)
         this.router.navigate(['/dashboard'])
     }, (err: any) => {
-        let error = err.errors
+        let error = err.error.msg
         console.log(error)
         Swal.fire('Atención',error, 'warning')
     })

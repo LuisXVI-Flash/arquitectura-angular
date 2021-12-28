@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { Subject } from 'rxjs';
+import { UserService } from 'src/app/services/user/user.service';
 
 @Component({
   selector: 'app-usuarios',
@@ -8,7 +10,11 @@ import { Component, OnInit } from '@angular/core';
 export class UsuariosComponent implements OnInit {
 
   dtOptions: DataTables.Settings = {};
-  constructor() { }
+  dtTrigger: Subject<any> = new Subject<any>()
+  userList: any
+  constructor(
+    private userService: UserService
+  ) { }
 
   ngOnInit(): void {
     this.dtOptions = {
@@ -37,5 +43,16 @@ export class UsuariosComponent implements OnInit {
       },
       responsive: true
     };
+    this.getUsers()
+  }
+
+  getUsers() {
+    this.userService.getList().subscribe((response: any) => {
+      console.log(response.usuario)
+        this.userList = response.usuario
+        this.dtTrigger.next(response.usuario)
+    }, (err: any) => {
+
+    })
   }
 }
