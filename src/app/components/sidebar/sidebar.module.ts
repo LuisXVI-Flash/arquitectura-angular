@@ -11,6 +11,7 @@ import { DashboardComponent } from './dashboard/dashboard.component';
 import { CommonModule } from "@angular/common";
 import { DataTablesModule } from "angular-datatables";
 import { AuthenticationGuard } from "src/app/services/auth/guard/authentication.guard";
+import { ModalComponent,SafeHtmlPipe } from "../modal/modal.component";
 const routes: Routes = [
     { path: '', component: SidebarComponent, canActivate: [AuthenticationGuard],
     children: [
@@ -33,7 +34,9 @@ const routes: Routes = [
         SolicitAtendidComponent,
         SolicitNoAtendidComponent,
         UsuariosComponent,
-        DashboardComponent
+        DashboardComponent,
+        ModalComponent,
+        SafeHtmlPipe
       ],
       imports: [
         CommonModule,

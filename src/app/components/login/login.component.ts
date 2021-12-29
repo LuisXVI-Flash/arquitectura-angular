@@ -41,7 +41,6 @@ export class LoginComponent implements OnInit {
         this.router.navigate(['/dashboard'])
     }, (err: any) => {
         let error = err.error.msg
-        console.log(error)
         Swal.fire('Atención',error, 'warning')
     })
   }

@@ -6973,7 +6973,14 @@ Media Query
     padding: 17px 29px;}
 }
 
+.modal-open {
+    overflow: hidden
+}
 
+.modal-open .modal {
+    overflow-x: hidden;
+    overflow-y: auto
+}
 
 
 /* Custom, iPhone Retina */

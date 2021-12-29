@@ -40,7 +40,6 @@ export class AuthenticationService {
     let array = token.split('.')
     let userData = array[1] ? JSON.parse(atob(array[1])) :  null
     this.userSubject.next(userData)
-    console.log(userData)
     return userData ? userData : null
   }
 
